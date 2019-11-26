@@ -11,7 +11,7 @@ namespace Log4NetDemo
 {
     class Program
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog log = LogHelper.GetLogger();
 
         static void Main(string[] args)
         {
