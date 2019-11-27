@@ -11,13 +11,27 @@ namespace Log4NetDemo
 {
     class Program
     {
-        private static readonly log4net.ILog log = LogHelper.GetLogger();
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         static void Main(string[] args)
         {
-            Console.WriteLine("====================== Logger demo =====================");
+            log.Debug("Developer: Tutorial was run");
+            log.Info("Maintenance: water pump turn on");
+            log.Warn("Maintenance: water pump is getting hot");
 
-            log.Error("This is my error message.");
+            var i = 0;
+
+            try
+            {
+                var x = 10 / i;
+            }
+            catch (DivideByZeroException ex)
+            {
+                //log.Error("We tried to divide by zero again", ex);
+                log.Error("We tried to divide by zero again");
+            }
+
+            log.Fatal("Maintenance: water pump exploded");
 
             Console.ReadLine();
         }
